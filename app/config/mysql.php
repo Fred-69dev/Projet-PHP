@@ -15,7 +15,3 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données: {$error->getMessage()}");
 }
-
-var_dump(
-    $db->query('SELECT * FROM users')->fetchALL()
-);
