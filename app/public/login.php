@@ -59,6 +59,7 @@ if (
 <body>
     <?php require_once '/app/public/Layout/_header.php'; ?>
     <main>
+        <?php require_once '/app/public/Layout/_messages.php'; ?>
         <section class="container mt-4">
             <h1 class="title text-center">Se connecter</h1>
             <form action="/login.php" method="POST" class="card mt-4 mx-auto w-50">

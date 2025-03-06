@@ -38,3 +38,32 @@ function findOneUserByEmail(string $email): bool|array
 
     return $sql->fetch();
 }
+/**
+ * Créer un utilisateur en BDD
+ * @param string $firstName Prénom de l'utilisateur
+ * @param string $lastName Nom de l'utilisateur
+ * @param string $email Email de l'utilisateur
+ * @param string $password Mot de passe de l'utilisateur
+ * @return bool 
+ */
+
+function createUser(string $firstName, string $lastName, string $email, string $password): bool
+{
+    global $db;
+
+    try {
+        $query = "INSERT INTO users(first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)";
+
+        $sql = $db->prepare($query);
+        $sql->execute([
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_ARGON2I),
+        ]);
+    } catch (PDOException $e) {
+        return false;
+    }
+
+    return true;
+}

@@ -2,7 +2,6 @@
 
 session_start();
 
-var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +16,8 @@ var_dump($_SESSION);
 <body>
     <?php require_once '/app/public/Layout/_header.php'; ?>
     <main>
+        <?php require_once '/app/public/Layout/_messages.php'; ?>
+
         <form action="/contact.php" method="POST">
             <label for="name">Votre nom</label>
             <input type="text" name="name" id="name">
